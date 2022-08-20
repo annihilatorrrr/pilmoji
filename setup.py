@@ -14,14 +14,16 @@ with open('pilmoji/__init__.py') as fp:
     try:
         version = re.search(
             r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]', contents, re.M
-        ).group(1)
+        )[1]
+
     except AttributeError:
         raise RuntimeError('Could not identify version') from None
 
     try:
         author = re.search(
             r'^__author__\s*=\s*[\'"]([^\'"]*)[\'"]', contents, re.M
-        ).group(1)
+        )[1]
+
     except AttributeError:
         author = 'jay3332'
 

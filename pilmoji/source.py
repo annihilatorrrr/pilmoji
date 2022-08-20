@@ -141,7 +141,7 @@ class DiscordEmojiSourceMixin(HTTPBasedSource):
 
     def get_discord_emoji(self, id: int, /) -> Optional[BytesIO]:
         url = self.BASE_DISCORD_EMOJI_URL + str(id) + '.png'
-        _to_catch = HTTPError if not _has_requests else requests.HTTPError
+        _to_catch = requests.HTTPError if _has_requests else HTTPError
 
         try:
             return BytesIO(self.request(url))
@@ -160,7 +160,7 @@ class EmojiCDNSource(DiscordEmojiSourceMixin):
             raise TypeError('STYLE class variable unfilled.')
 
         url = self.BASE_EMOJI_CDN_URL + quote_plus(emoji) + '?style=' + quote_plus(self.STYLE)
-        _to_catch = HTTPError if not _has_requests else requests.HTTPError
+        _to_catch = requests.HTTPError if _has_requests else HTTPError
 
         try:
             return BytesIO(self.request(url))
