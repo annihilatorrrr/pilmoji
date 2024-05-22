@@ -1,3 +1,5 @@
+this is a fix of the repo: https://github.com/jay3332/pilmoji which is not up to date
+
 # Pilmoji
 Pilmoji is an emoji renderer for [Pillow](https://github.com/python-pillow/Pillow/), 
 Python's imaging library.
