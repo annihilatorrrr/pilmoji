@@ -4,7 +4,7 @@ import re
 
 from enum import Enum
 
-from emoji import unicode_codes
+import emoji
 
 import PIL
 from PIL import ImageFont
