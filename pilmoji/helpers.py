@@ -15,7 +15,13 @@ if TYPE_CHECKING:
     from .core import FontT
 
 # This is actually way faster than it seems
-language_pack: Dict[str, str] = {data['en']: emj for emj, data in emoji.EMOJI_DATA.items() if 'en' in data and data['status'] <= emoji.STATUS['fully_qualified']}
+# Create a dictionary mapping English emoji descriptions to their unicode representations
+# Only include emojis that have an English description and are fully qualified
+language_pack: Dict[str, str] = {
+    data['en']: emj
+    for emj, data in emoji.EMOJI_DATA.items()
+    if 'en' in data and data['status'] <= emoji.STATUS['fully_qualified']
+}
 _UNICODE_EMOJI_REGEX = '|'.join(map(re.escape, sorted(language_pack.values(), key=len, reverse=True)))
 _DISCORD_EMOJI_REGEX = '<a?:[a-zA-Z0-9_]{1,32}:[0-9]{17,22}>'
 
